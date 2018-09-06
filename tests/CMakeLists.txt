@@ -6,6 +6,8 @@ set_target_properties(catch_main PROPERTIES FOLDER "tests")
 SET( CSTE_MATH_TESTS
   rounding/ceil.cpp
   rounding/floor.cpp
+
+  trigonometry/sine.cpp
 )
 
 MACRO(config_test_target TGT)

@@ -10850,7 +10850,7 @@ std::string fpToString( T value, int precision ) {
 
     ReusableStringStream rss;
     rss << std::setprecision( precision )
-        << std::fixed
+        << std::scientific
         << value;
     std::string d = rss.str();
     std::size_t i = d.find_last_not_of( '0' );
@@ -10996,10 +10996,10 @@ std::string StringMaker<std::nullptr_t>::convert(std::nullptr_t) {
 }
 
 std::string StringMaker<float>::convert(float value) {
-    return fpToString(value, 5) + 'f';
+    return fpToString(value, std::numeric_limits<float>::digits10 + 1) + 'f';
 }
 std::string StringMaker<double>::convert(double value) {
-    return fpToString(value, 10);
+    return fpToString(value, std::numeric_limits<double>::digits10 + 1);
 }
 
 std::string ratio_string<std::atto>::symbol() { return "a"; }
