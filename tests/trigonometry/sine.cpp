@@ -36,20 +36,14 @@ TEST_CASE("basic sine usage", "[sine][basic]") {
   REQUIRE_THAT(cste::sine(-1.14), WithinULP(std::sin(-1.14), 1));
 }
 
-
 TEST_CASE("sine(x), x > pi/2", "[sine]") {
   REQUIRE_THAT(cste::sine(2.5), WithinULP(std::sin(2.5), 1));
   REQUIRE_THAT(cste::sine(-2.5), WithinULP(std::sin(-2.5), 1));  
 }
 
 TEST_CASE("sine(x), x > pi", "[sine]") {
-  // At this point, we are more precise than std::sin...
-
-
   for(int i = 1 ; i < 100000; i ++) {
     double v = cste::pi<double> * i;
-
-    std::cout << i << " " << cste::sine(v) << " " << std::sin(v) << "\n";
 
     // This is not great, but the idea is that we try to roughly account
     // for the error in i*pi

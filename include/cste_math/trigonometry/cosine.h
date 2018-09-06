@@ -1,5 +1,5 @@
-#ifndef CSTE_MATH_TRIGNOMETRY_SINE_H_INCLUDED
-#define CSTE_MATH_TRIGNOMETRY_SINE_H_INCLUDED
+#ifndef CSTE_MATH_TRIGNOMETRY_COSINE_H_INCLUDED
+#define CSTE_MATH_TRIGNOMETRY_COSINE_H_INCLUDED
 
 #include "cste_math/config.h"
 
@@ -16,7 +16,7 @@ namespace CSTE_MATH_NAMESPACE {
 
   // 
   template<typename T>
-  constexpr T sine(const T& rad) {
+  constexpr T cosine(const T& rad) {
     if(std::isnan(rad)) {
       return rad;
     }
@@ -28,10 +28,10 @@ namespace CSTE_MATH_NAMESPACE {
     long double r = rad;
 
     // Remap into the -PI->PI range.
-    if(r > pi<long double>) {
-      r = modulo(r, two_pi<long double>);
-    } else if( r < -pi<long double>) {
-      r = modulo(r, -two_pi<long double>);
+    if(r > pi<T>) {
+      r = modulo(rad, two_pi<T>);
+    } else if( r < -pi<T>) {
+      r = modulo(rad, -two_pi<T>);
     }
 
     if(r > pi<long double>) {
@@ -40,23 +40,23 @@ namespace CSTE_MATH_NAMESPACE {
       r += two_pi<long double>;
     }
 
-
-
     // Remap into the -PI/2->PI/2 range.
+    long double neg = 1.0L;
     if(r > half_pi<long double>) {
-      r = pi<T> - r;
+      r -= pi<T>;
+      neg = -1.0L;
     } else if(r < -half_pi<long double>) {
-      r = -pi<T> - r;
+      r += pi<T>;
+      neg = -1.0L;
     }
-
 
     if(r < -quarter_pi<long double>) {
-      return -cosine_pi4(r + half_pi<long double>);
+      return neg * sine_pi4(r + half_pi<long double>);
     } else if(r > quarter_pi<long double>) {
-      return cosine_pi4(r - half_pi<long double>);
+      return neg * -sine_pi4(r - half_pi<long double>);
     }
       
-    return sine_pi4(r);
+    return neg *cosine_pi4(r);
   }
 }
 
