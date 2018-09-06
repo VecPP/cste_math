@@ -10,7 +10,7 @@
 
 #include "cste_math/config.h"
 
-namespace VECPP_NAMESPACE {
+namespace CSTE_MATH_NAMESPACE {
 
 // Constants are defined with enough precision for a Quadruple precision float
 // which means at least 36 decimal digits.

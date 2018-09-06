@@ -11,3 +11,5 @@
 
 #include "cste_math/rounding/ceil.h"
 #include "cste_math/rounding/floor.h"
+
+#include "cste_math/trigonometry/sine.h"

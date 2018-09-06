@@ -6,11 +6,11 @@
 namespace CSTE_MATH_NAMESPACE {
 
 template<typename T>
-constexpr T floor(const T& v) {
-  constexpr T range_max = std::ldexp(2, std::numeric_limits<T>::digits);
-  constexpr T range_min = -range_max;
+constexpr T floor(const T& val) {
+  constexpr long long int range_max = 1LL << std::numeric_limits<T>::digits;
+  constexpr long long int range_min = -range_max;
 
-  if (v >= range_max || v <= range_min || std::isnan(v)) {
+  if (v >= range_max || v <= range_min) {
     return v;
   }
   

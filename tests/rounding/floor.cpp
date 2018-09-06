@@ -22,12 +22,12 @@ TEST_CASE("basic floor usage", "[floor][basic]") {
   REQUIRE_THAT(cste::floor(std::nextafter(1.0, 0.0)), WithinULP(0.0, 1));
 }
 
-TEST_CASE("very large constexpr floor", "[floor]") {
+TEST_CASE("very large constexpr floor", "[floor][large]") {
   REQUIRE(cste::floor(10.0e20f) == 10.0e20f);
   REQUIRE(cste::floor(-10.0e20f) == -10.0e20f);
 }
 
-TEST_CASE("floor degenerate values", "[floor]") {
+TEST_CASE("floor degenerate values", "[floor][degen]") {
   auto inf = std::numeric_limits<float>::infinity();
   auto nan = std::numeric_limits<float>::quiet_NaN();
 
