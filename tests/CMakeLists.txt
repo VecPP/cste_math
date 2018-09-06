@@ -7,6 +7,7 @@ SET( CSTE_MATH_TESTS
   rounding/ceil.cpp
   rounding/floor.cpp
 
+  trigonometry/cosine.cpp
   trigonometry/sine.cpp
 )
 
