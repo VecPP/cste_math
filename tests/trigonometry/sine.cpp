@@ -47,7 +47,7 @@ TEST_CASE("sine(x), x > pi", "[sine]") {
 
     // This is not great, but the idea is that we try to roughly account
     // for the error in i*pi
-    REQUIRE_THAT(cste::sine(v), WithinAbs(0.0, 1.e-14 * (double)i));
+    REQUIRE_THAT(cste::sine(v), WithinAbs(0.0, 1.e-15 * (double)i));
   }
 
 }
