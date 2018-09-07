@@ -10,7 +10,7 @@
 namespace CSTE_MATH_NAMESPACE {
 
 template <typename T> 
-constexpr T sqrt(const T& v) {
+constexpr T square_root(const T& v) {
   assert(v >= T(0));
 
   if (v == T(0)) {

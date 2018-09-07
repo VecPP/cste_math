@@ -11,7 +11,7 @@ namespace CSTE_MATH_NAMESPACE {
 
 // Raises v by the operand p
 template<typename T, typename U>
-constexpr T pow(const T& v, const U& p) {
+constexpr T power(const T& v, const U& p) {
   if constexpr(std::is_integral<U>()) {
     T result = 1;
     for(U i = 0 ; i < p; ++i) {

@@ -4,6 +4,7 @@
 #include "cste_math/config.h"
 
 #include "cste_math/constants.h"
+#include "cste_math/rounding/round_down.h"
 
 #include <limits>
 #include <cmath>
@@ -30,15 +31,13 @@ namespace exp_details {
 }
 // Raises e by the operand
 template<typename T>
-constexpr T exp(const T& v) {
-  // separate integral and fractional components
-
+constexpr T exponential(const T& v) {
   long double v_p = v;
   bool neg = v < 0;
   if(neg) { v_p = -v_p; }
 
-
-  uint32_t integral = floor(v);
+  // separate integral and fractional components
+  uint32_t integral = round_down(v);
   long double fract = v_p - integral;
 
   long double int_val = 1;
@@ -55,12 +54,7 @@ constexpr T exp(const T& v) {
   long double fract_val = exp_details::recur_helper(fract, 1, 1, 1) + 1.0L;
 
   long double result = fract_val * int_val;
-  if(neg) {
-    result = -result;
-  }
-
-  return result;
-
+  return neg ? T(1) / result : result;
 }
 
 }
