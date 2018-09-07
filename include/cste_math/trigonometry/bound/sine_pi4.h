@@ -4,15 +4,12 @@
 #include "cste_math/config.h"
 
 #include "cste_math/constants.h"
-#include "cste_math/factorial.h"
 
 #include <cassert>
 #include <iomanip>
 #include <iostream>
 
 namespace CSTE_MATH_NAMESPACE {
-
-// Evaluates sin(x) in the [-PI/4, PI/4] range
 
 namespace sine_detail {
 
@@ -25,13 +22,14 @@ constexpr long double sine_recur_helper(long double r_2, long double num,
   num *= r_2;
 
   long double factor = num / fact;
-  if(factor == 0.0L) {
+  if (factor == 0.0L) {
     return 0.0;
   }
   return factor + sine_recur_helper(r_2, num, fact, i + 2);
 }
 }
 
+// Evaluates sin(x) in the [-PI/4, PI/4] range
 template <typename T>
 constexpr T sine_pi4(const T& rad) {
   assert(rad >= -quarter_pi<T> && rad <= quarter_pi<T>);

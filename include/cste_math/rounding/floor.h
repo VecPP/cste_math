@@ -3,17 +3,23 @@
 
 #include "cste_math/config.h"
 
+#include "cste_math/calc/pow.h"
+#include "cste_math/misc/inf_nan.h"
+
+#include <cmath>
+#include <limits>
+
 namespace CSTE_MATH_NAMESPACE {
 
-template<typename T>
+template <typename T>
 constexpr T floor(const T& v) {
-  constexpr T range_max = std::ldexp(2, std::numeric_limits<T>::digits);
+  constexpr T range_max = pow(T(2), (std::numeric_limits<T>::digits - 1));
   constexpr T range_min = -range_max;
 
-  if (v >= range_max || v <= range_min || std::isnan(v)) {
+  if (v >= range_max || v <= range_min || is_nan(v)) {
     return v;
   }
-  
+
   long long int x = static_cast<long long int>(v);
   if (v == T(x) || v > T(0)) {
     return T(x);

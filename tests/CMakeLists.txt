@@ -4,6 +4,8 @@ add_library(catch_main catch_main.cpp)
 set_target_properties(catch_main PROPERTIES FOLDER "tests")
 
 SET( CSTE_MATH_TESTS
+  calc/exp.cpp
+
   rounding/ceil.cpp
   rounding/floor.cpp
 
