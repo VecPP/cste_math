@@ -12,6 +12,8 @@
 
 #include "cste_math/calc/exponential.h"
 
+#include "cste_math/rounding/absolute.h"
+#include "cste_math/rounding/round.h"
 #include "cste_math/rounding/round_down.h"
 #include "cste_math/rounding/round_up.h"
 
