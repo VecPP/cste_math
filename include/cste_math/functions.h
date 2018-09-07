@@ -14,9 +14,13 @@ namespace CSTE_MATH_NAMESPACE {
 
 // ************************** Rounding Functions ************************** //
 template <typename T>
-constexpr T ceil(const T& v);
+constexpr T absolute(const T& v);
 template <typename T>
-constexpr T floor(const T& v);
+constexpr T round(const T& v);
+template <typename T>
+constexpr T round_down(const T& v);
+template <typename T>
+constexpr T round_up(const T& v);
 
 // ************************ Trigonometry Functions ************************ //
 template <typename T>
