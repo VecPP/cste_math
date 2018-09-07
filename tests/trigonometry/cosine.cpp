@@ -34,16 +34,6 @@ TEST_CASE("basic cosine usage", "[cosine][basic]") {
   // Past pi/4
   REQUIRE_THAT(cste::cosine(1.14), WithinULP(std::cos(1.14), 1));  
   REQUIRE_THAT(cste::cosine(-1.14), WithinULP(std::cos(-1.14), 1));
-
-  REQUIRE_THAT(cste::cosine(cste::quarter_pi<double>), WithinULP(std::cos(cste::quarter_pi<double>), 1));
-  //REQUIRE_THAT(cste::cosine(cste::half_pi<double>), WithinULP(std::cos(cste::half_pi<double>), 5));
-  REQUIRE_THAT(cste::cosine(cste::pi<double>), WithinULP(std::cos(cste::pi<double>), 1));
-  REQUIRE_THAT(cste::cosine(cste::two_pi<double>), WithinULP(std::cos(cste::two_pi<double>), 1));
-
-  REQUIRE_THAT(cste::cosine(-cste::quarter_pi<double>), WithinULP(std::cos(-cste::quarter_pi<double>), 1));
-  //REQUIRE_THAT(cste::cosine(-cste::half_pi<double>), WithinULP(std::cos(-cste::half_pi<double>), 5));
-  REQUIRE_THAT(cste::cosine(-cste::pi<double>), WithinULP(std::cos(-cste::pi<double>), 1));
-  REQUIRE_THAT(cste::cosine(-cste::two_pi<double>), WithinULP(std::cos(-cste::two_pi<double>), 1));
 }
 
 TEST_CASE("cosine(x), x > pi/2", "[cosine]") {
@@ -57,10 +47,10 @@ TEST_CASE("cosine(x), x > pi", "[cosine]") {
     // This is not great, but the idea is that we try to roughly account
     // for the error in i*pi
     if(i % 2) {
-      REQUIRE_THAT(cste::cosine(v), WithinAbs(-1.0, 1.e-14 * (double)i));
+      REQUIRE_THAT(cste::cosine(v), WithinAbs(-1.0, 1.e-15 * (double)i));
     }
     else {
-      REQUIRE_THAT(cste::cosine(v), WithinAbs(1.0, 1.e-14 * (double)i));
+      REQUIRE_THAT(cste::cosine(v), WithinAbs(1.0, 1.e-15 * (double)i));
     }
   }
 

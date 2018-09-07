@@ -7,27 +7,40 @@
 #include "cste_math/factorial.h"
 
 #include <cassert>
+#include <iomanip>
+#include <iostream>
 
 namespace CSTE_MATH_NAMESPACE {
 
-  // Evaluates sin(x) in the [-PI/4, PI/4] range
-  template<typename T>
-  constexpr T sine_pi4(const T& rad) {
-    assert(rad >= -quarter_pi<T> && rad <= quarter_pi<T>);
-    // Promote to long double
-    long double r = rad;
-    
-    // A simple Taylor series expansion for now
-    long double r_2 = r * r * -1.0;
-    long double num = r;
-    long double result = r;
-    for (std::size_t i = 3; i < 19; i += 2) {
-      num *= r_2;
-      result += num / factorial<long long>(i);
-    }
+// Evaluates sin(x) in the [-PI/4, PI/4] range
 
-    return T(result);
+namespace sine_detail {
+
+// We have to do this recursively, because we want to collapse from the end
+// to the start.
+constexpr long double sine_recur_helper(long double r_2, long double num,
+                                        double fact, std::size_t i) {
+  fact *= (i - 1);
+  fact *= (i);
+  num *= r_2;
+
+  long double factor = num / fact;
+  if(factor == 0.0L) {
+    return 0.0;
   }
+  return factor + sine_recur_helper(r_2, num, fact, i + 2);
+}
+}
+
+template <typename T>
+constexpr T sine_pi4(const T& rad) {
+  assert(rad >= -quarter_pi<T> && rad <= quarter_pi<T>);
+
+  // Promote to long double
+  long double r = rad;
+
+  return sine_detail::sine_recur_helper(r * r * -1.0L, r, 1.0L, 3) + r;
+}
 }
 
 #endif
