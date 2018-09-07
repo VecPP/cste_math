@@ -23,7 +23,7 @@ constexpr long double cosine_recur_helper(long double r_2, long double num,
   if (factor == 0.0L) {
     return 0.0;
   }
-
+   
   return factor + cosine_recur_helper(r_2, num, fact, i + 2);
 }
 }
