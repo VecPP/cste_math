@@ -8,6 +8,9 @@
 #include "cste_math/config.h"
 
 #include "cste_math/constants.h"
+#include "cste_math/functions.h"
+
+#include "cste_math/calc/exp.h"
 
 #include "cste_math/rounding/ceil.h"
 #include "cste_math/rounding/floor.h"
