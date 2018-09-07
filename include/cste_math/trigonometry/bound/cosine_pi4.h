@@ -13,7 +13,7 @@ namespace cosine_detail {
 
 // We have to do this recursively, because we want to collapse from the end
 // to the start.
-constexpr long double cosine_recur_helper(long double r_2, long double num,
+constexpr long double recur_helper(long double r_2, long double num,
                                           long double fact, std::size_t i) {
   fact *= (i - 1);
   fact *= (i);
@@ -23,8 +23,7 @@ constexpr long double cosine_recur_helper(long double r_2, long double num,
   if (factor == 0.0L) {
     return 0.0;
   }
-   
-  return factor + cosine_recur_helper(r_2, num, fact, i + 2);
+  return factor + recur_helper(r_2, num, fact, i + 2);
 }
 }
 
@@ -36,7 +35,7 @@ constexpr T cosine_pi4(const T& rad) {
   long double r = rad;
   long double r_2 = r * r * -1.0;
 
-  return cosine_detail::cosine_recur_helper(r_2, 1, 1.0L, 2) + 1.0L;
+  return cosine_detail::recur_helper(r_2, 1, 1.0L, 2) + 1.0L;
 }
 }
 

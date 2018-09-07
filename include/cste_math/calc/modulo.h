@@ -3,7 +3,7 @@
 
 #include "cste_math/config.h"
 
-#include "cste_math/rounding/floor.h"
+#include "cste_math/rounding/round_down.h"
 
 #include <type_traits>
 
@@ -12,7 +12,7 @@ template<typename T>
 constexpr T modulo(const T& val, const T& div) {
   if constexpr(std::is_integral_v<T>) { return val % div; }
   else {
-    return val - floor(val / div) * div;
+    return val - round_down(val / div) * div;
   }
 }
 }

@@ -26,12 +26,12 @@ constexpr T cosine(const T&);
 
 // ************************** Calculus Functions ************************** //
 template <typename T>
-constexpr T exp(const T& v);
+constexpr T exponential(const T& v);
 template <typename T>
 constexpr T modulo(const T& val, const T& div);
 template <typename T, typename U>
-constexpr T pow(const T& v, const U& p);
+constexpr T power(const T& v, const U& p);
 template <typename T>
-constexpr T sqrt(const T& v);
+constexpr T square_root(const T& v);
 }  // namespace VECPP_NAMESPACE
 #endif

@@ -10,10 +10,10 @@
 #include "cste_math/constants.h"
 #include "cste_math/functions.h"
 
-#include "cste_math/calc/exp.h"
+#include "cste_math/calc/exponential.h"
 
-#include "cste_math/rounding/ceil.h"
-#include "cste_math/rounding/floor.h"
+#include "cste_math/rounding/round_down.h"
+#include "cste_math/rounding/round_up.h"
 
 #include "cste_math/trigonometry/cosine.h"
 #include "cste_math/trigonometry/sine.h"

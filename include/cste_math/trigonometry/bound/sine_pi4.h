@@ -15,7 +15,7 @@ namespace sine_detail {
 
 // We have to do this recursively, because we want to collapse from the end
 // to the start.
-constexpr long double sine_recur_helper(long double r_2, long double num,
+constexpr long double recur_helper(long double r_2, long double num,
                                         double fact, std::size_t i) {
   fact *= (i - 1);
   fact *= (i);
@@ -25,7 +25,7 @@ constexpr long double sine_recur_helper(long double r_2, long double num,
   if (factor == 0.0L) {
     return 0.0;
   }
-  return factor + sine_recur_helper(r_2, num, fact, i + 2);
+  return factor + recur_helper(r_2, num, fact, i + 2);
 }
 }
 
@@ -37,7 +37,7 @@ constexpr T sine_pi4(const T& rad) {
   // Promote to long double
   long double r = rad;
 
-  return sine_detail::sine_recur_helper(r * r * -1.0L, r, 1.0L, 3) + r;
+  return sine_detail::recur_helper(r * r * -1.0L, r, 1.0L, 3) + r;
 }
 }
 

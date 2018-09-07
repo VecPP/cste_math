@@ -3,7 +3,7 @@
 
 #include "cste_math/config.h"
 
-#include "cste_math/calc/pow.h"
+#include "cste_math/calc/power.h"
 #include "cste_math/misc/inf_nan.h"
 
 #include <cmath>
@@ -12,8 +12,8 @@
 namespace CSTE_MATH_NAMESPACE {
 
 template <typename T>
-constexpr T floor(const T& v) {
-  constexpr T range_max = pow(T(2), (std::numeric_limits<T>::digits - 1));
+constexpr T round_down(const T& v) {
+  constexpr T range_max = power(T(2), (std::numeric_limits<T>::digits - 1));
   constexpr T range_min = -range_max;
 
   if (v >= range_max || v <= range_min || is_nan(v)) {
