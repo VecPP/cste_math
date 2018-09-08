@@ -14,6 +14,6 @@ constexpr bool is_inf(const T& v) {
   constexpr T inf = std::numeric_limits<T>::infinity();
   return v == inf || v == -inf;
 }
-}
+}  // namespace CSTE_MATH_NAMESPACE
 
 #endif

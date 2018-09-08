@@ -26,6 +26,6 @@ constexpr T round_up(const T& v) {
   }
   return T(x + 1);
 }
-}
+}  // namespace CSTE_MATH_NAMESPACE
 
 #endif

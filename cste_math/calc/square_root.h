@@ -3,13 +3,13 @@
 
 #include "cste_math/config.h"
 
-#include <limits>
-#include <cmath>
 #include <cassert>
+#include <cmath>
+#include <limits>
 
 namespace CSTE_MATH_NAMESPACE {
 
-template <typename T> 
+template <typename T>
 constexpr T square_root(const T& v) {
   assert(v >= T(0));
 
@@ -29,7 +29,6 @@ constexpr T square_root(const T& v) {
 
   return r;
 }
-}
+}  // namespace CSTE_MATH_NAMESPACE
 
 #endif
-

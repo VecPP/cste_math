@@ -37,5 +37,5 @@ template <typename T, typename U>
 constexpr T power(const T& v, const U& p);
 template <typename T>
 constexpr T square_root(const T& v);
-}  // namespace VECPP_NAMESPACE
+}  // namespace CSTE_MATH_NAMESPACE
 #endif
