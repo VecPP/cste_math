@@ -154,9 +154,40 @@ constexpr T exponential(const T& v) {
 
 namespace CSTE_MATH_NAMESPACE {
 template <typename T>
+constexpr T modulo(const T& val, const T& div) {
+  if constexpr (std::is_integral_v<T>) {
+    return val % div;
+  } else {
+    return val - round_down(val / div) * div;
+  }
+}
+}  // namespace CSTE_MATH_NAMESPACE
+
+namespace CSTE_MATH_NAMESPACE {
+template <typename T>
+constexpr T square_root(const T& v) {
+  assert(v >= T(0));
+  if (v == T(0)) {
+    return v;
+  }
+  T r = v;
+  // A simple newton-rhapson for now.
+  while (1) {
+    T tmp = (r + v / r) / T(2);
+    if (tmp == r) {
+      break;
+    }
+    r = tmp;
+  }
+  return r;
+}
+}  // namespace CSTE_MATH_NAMESPACE
+
+namespace CSTE_MATH_NAMESPACE {
+template <typename T>
 constexpr T sign(const T& v) {
   // https://stackoverflow.com/a/4609795/4442671
-  return (T(0) < v) - (v < T(0));
+  return T((T(0) < v) - (v < T(0)));
 }
 }  // namespace CSTE_MATH_NAMESPACE
 
@@ -169,24 +200,8 @@ constexpr T absolute(const T& v) {
 
 namespace CSTE_MATH_NAMESPACE {
 template <typename T>
-constexpr T truncate(const T& v) {
-  constexpr T range_max = power(T(2), (std::numeric_limits<T>::digits - 1));
-  constexpr T range_min = -range_max;
-  if (v >= range_max || v <= range_min || is_nan(v)) {
-    return v;
-  }
-  long long int x = static_cast<long long int>(v);
-  if (v == T(x) || v > T(0)) {
-    return T(x);
-  }
-  return T(x - 1);
-}
-}  // namespace CSTE_MATH_NAMESPACE
-
-namespace CSTE_MATH_NAMESPACE {
-template <typename T>
 constexpr T fractional(const T& val) {
-  return val - truncate(val);
+  return val - round_down(val);
 }
 }  // namespace CSTE_MATH_NAMESPACE
 
@@ -215,12 +230,9 @@ constexpr T round_up(const T& v) {
 
 namespace CSTE_MATH_NAMESPACE {
 template <typename T>
-constexpr T modulo(const T& val, const T& div) {
-  if constexpr (std::is_integral_v<T>) {
-    return val % div;
-  } else {
-    return val - round_down(val / div) * div;
-  }
+constexpr T truncate(const T& v) {
+  long long int x = static_cast<long long int>(v);
+  return T(x);
 }
 }  // namespace CSTE_MATH_NAMESPACE
 
@@ -365,8 +377,8 @@ namespace stdlib {
     return round_down(arg);
   }
   template<typename T>
-  constexpr T fmod(const T& arg) {
-    return modulo(arg);
+  constexpr T fmod(const T& v, const T& d) {
+    return modulo(v, d);
   }
   template<typename T>
   constexpr T fract(const T& arg) {
@@ -374,7 +386,7 @@ namespace stdlib {
   }
   template<typename T>
   constexpr T round(const T& arg) {
-    return round_nearest(arg);
+    return ::CSTE_MATH_NAMESPACE::round(arg);
   }
   template<typename T>
   constexpr T trunc(const T& arg) {

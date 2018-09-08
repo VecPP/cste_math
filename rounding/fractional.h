@@ -3,14 +3,14 @@
 
 #include "cste_math/config.h"
 
-#include "cste_math/rounding/truncate.h"
+#include "cste_math/rounding/round_down.h"
 
 #include <type_traits>
 
 namespace CSTE_MATH_NAMESPACE {
 template <typename T>
 constexpr T fractional(const T& val) {
-  return val - truncate(val);
+  return val - round_down(val);
 }
 }  // namespace CSTE_MATH_NAMESPACE
 

@@ -11,6 +11,9 @@
 #include "cste_math/functions.h"
 
 #include "cste_math/calc/exponential.h"
+#include "cste_math/calc/modulo.h"
+#include "cste_math/calc/power.h"
+#include "cste_math/calc/square_root.h"
 
 #include "cste_math/misc/inf_nan.h"
 #include "cste_math/misc/sign.h"

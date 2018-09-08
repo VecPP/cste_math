@@ -43,8 +43,8 @@ namespace stdlib {
   }
 
   template<typename T>
-  constexpr T fmod(const T& arg) {
-    return modulo(arg);
+  constexpr T fmod(const T& v, const T& d) {
+    return modulo(v, d);
   }
 
   template<typename T>
@@ -54,7 +54,7 @@ namespace stdlib {
 
   template<typename T>
   constexpr T round(const T& arg) {
-    return round_nearest(arg);
+    return ::CSTE_MATH_NAMESPACE::round(arg);
   }
 
   template<typename T>
