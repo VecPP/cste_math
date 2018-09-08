@@ -2,6 +2,10 @@
 
 constexpr scalar math.
 
+[![Build Status](https://travis-ci.com/VecPP/cste_math.svg?branch=master)](https://travis-ci.com/VecPP/cste_math)
+[![CircleCI](https://circleci.com/gh/VecPP/cste_math.svg?style=svg)](https://circleci.com/gh/VecPP/cste_math)
+[![Build status](https://ci.appveyor.com/api/projects/status/hfidx2nn06jc480k/branch/master?svg=true)](https://ci.appveyor.com/project/FrancoisChabot/cste-math/branch/master)
+
 ```cpp
 #include "cste_math/cste_math.h"
 
