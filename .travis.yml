@@ -5,7 +5,7 @@ dist: xenial
 branches:
   except:
   - gh-pages
-  - single_header
+  - built
 
 env:
   - DELAYED_EVAL="CC=gcc-7 && CXX=g++-7"
