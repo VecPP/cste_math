@@ -365,6 +365,13 @@ constexpr T sine(const T& rad) {
 }  // namespace CSTE_MATH_NAMESPACE
 
 namespace CSTE_MATH_NAMESPACE {
+template <typename T>
+constexpr T cosine(const T& rad) {
+  return since(rad) / cosine(rad);
+}
+}  // namespace CSTE_MATH_NAMESPACE
+
+namespace CSTE_MATH_NAMESPACE {
 namespace stdlib {
   template<typename T>
   constexpr T abs(const T& arg) {
@@ -405,6 +412,18 @@ namespace stdlib {
   template<typename T>
   constexpr T sqrt(const T& arg) {
     return square_root(arg);
+  }
+  template<typename T>
+  constexpr T sin(const T& arg) {
+    return sine(arg);
+  }
+  template<typename T>
+  constexpr T cos(const T& arg) {
+    return cosine(arg);
+  }
+  template<typename T>
+  constexpr T tan(const T& arg) {
+    return tangent(arg);
   }
 }
 }  // namespace CSTE_MATH_NAMESPACE
