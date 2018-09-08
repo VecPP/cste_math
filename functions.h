@@ -24,6 +24,8 @@ constexpr bool is_inf(const T& v);
 template <typename T>
 constexpr T absolute(const T& v);
 template <typename T>
+constexpr T fractional(const T& v);
+template <typename T>
 constexpr T round(const T& v);
 template <typename T>
 constexpr T round_down(const T& v);

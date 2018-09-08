@@ -48,6 +48,11 @@ namespace stdlib {
   }
 
   template<typename T>
+  constexpr T fract(const T& arg) {
+    return fractional(arg);
+  }
+
+  template<typename T>
   constexpr T round(const T& arg) {
     return round_nearest(arg);
   }
