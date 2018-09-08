@@ -9,13 +9,6 @@ namespace CSTE_MATH_NAMESPACE {
 
 template <typename T>
 constexpr T round(const T& v) {
-  constexpr T range_max = power(T(2), (std::numeric_limits<T>::digits - 1));
-  constexpr T range_min = -range_max;
-
-  if (v >= range_max || v <= range_min || is_nan(v)) {
-    return v;
-  }
-
   return round_down(v + T(0.5));
 }
 }  // namespace CSTE_MATH_NAMESPACE

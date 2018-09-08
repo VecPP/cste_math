@@ -10,6 +10,8 @@
 
 #include "cste_math/config.h"
 
+#include "cste_math/functions.h"
+
 // This file provides an api matching the C++ stdlib as much as possible, so 
 // that cste_math can be used as a drop-in replacement.
 
@@ -41,35 +43,27 @@ namespace stdlib {
   }
 
   template<typename T>
+  constexpr T fmod(const T& arg) {
+    return modulo(arg);
+  }
+
+  template<typename T>
   constexpr T round(const T& arg) {
     return round_nearest(arg);
   }
+
+  template<typename T>
+  constexpr T trunc(const T& arg) {
+    return truncate(arg);
+  }
+
+  template<typename T>
+  constexpr T sqrt(const T& arg) {
+    return square_root(arg);
+  }
+
+  
 }
 
-// ************************** Rounding Functions ************************** //
-template <typename T>
-constexpr T absolute(const T& v);
-template <typename T>
-constexpr T round(const T& v);
-template <typename T>
-constexpr T round_down(const T& v);
-template <typename T>
-constexpr T round_up(const T& v);
-
-// ************************ Trigonometry Functions ************************ //
-template <typename T>
-constexpr T sine(const T&);
-template <typename T>
-constexpr T cosine(const T&);
-
-// ************************** Calculus Functions ************************** //
-template <typename T>
-constexpr T exponential(const T& v);
-template <typename T>
-constexpr T modulo(const T& val, const T& div);
-template <typename T, typename U>
-constexpr T power(const T& v, const U& p);
-template <typename T>
-constexpr T square_root(const T& v);
 }  // namespace CSTE_MATH_NAMESPACE
 #endif
