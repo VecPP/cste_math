@@ -10,6 +10,6 @@ constexpr T absolute(const T& v) {
   return v < 0 ? -v : v;
 }
 
-}
+}  // namespace CSTE_MATH_NAMESPACE
 
 #endif

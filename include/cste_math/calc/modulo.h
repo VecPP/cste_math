@@ -8,13 +8,14 @@
 #include <type_traits>
 
 namespace CSTE_MATH_NAMESPACE {
-template<typename T>
+template <typename T>
 constexpr T modulo(const T& val, const T& div) {
-  if constexpr(std::is_integral_v<T>) { return val % div; }
-  else {
+  if constexpr (std::is_integral_v<T>) {
+    return val % div;
+  } else {
     return val - round_down(val / div) * div;
   }
 }
-}
+}  // namespace CSTE_MATH_NAMESPACE
 
 #endif

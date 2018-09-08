@@ -56,6 +56,6 @@ constexpr T sine(const T& rad) {
 
   return T(sine_pi4(r));
 }
-}
+}  // namespace CSTE_MATH_NAMESPACE
 
 #endif

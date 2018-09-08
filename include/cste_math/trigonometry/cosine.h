@@ -59,6 +59,6 @@ constexpr T cosine(const T& rad) {
 
   return T(neg * cosine_pi4(r));
 }
-}
+}  // namespace CSTE_MATH_NAMESPACE
 
 #endif

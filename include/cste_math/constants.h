@@ -30,5 +30,5 @@ constexpr T two_pi = pi<T>* T(2);
 template <typename T>
 constexpr T e = T(2.71828182845904523536028747135266249775724709L);
 
-}  // namespace VECPP_NAMESPACE
+}  // namespace CSTE_MATH_NAMESPACE
 #endif
