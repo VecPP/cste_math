@@ -20,38 +20,16 @@ addons:
 before_install:
   - eval "${DELAYED_EVAL}"
 
-install:
-- sudo pip install mkdocs
-
 script:
     - mkdir _bld && cd _bld
-    - cmake -DCSTE_MATH_BUILD_TYPE=DEBUG -DCSTE_MATH_BUILD_TESTS=ON -DCSTE_MATH_BUILD_SINGLE_HEADER=ON ..
+    - cmake -DCMAKE_BUILD_TYPE=DEBUG -DCSTE_MATH_BUILD_TESTS=ON -DCSTE_MATH_BUILD_SINGLE_HEADER=ON ..
     - cmake --build .
     - ctest --output-on-failure
     - cd ..
     - mkdir _bld_rel && cd _bld_rel
-    - cmake -DCMAKE_BUILD_TYPE=RELEASE -DCSTE_MATH_BUILD_TESTS=ON -DCSTE_MATH_BUILD_SINGLE_HEADER=ON -DCSTE_MATH_BUILD_DOCS=ON ..
+    - cmake -DCMAKE_BUILD_TYPE=RELEASE -DCSTE_MATH_BUILD_TESTS=ON -DCSTE_MATH_BUILD_SINGLE_HEADER=ON ..
     - cmake --build .
     - ctest --output-on-failure
-    - cd ..
-    - cp -R include/cste_math/. _bld_rel/cste_math
-
-deploy:
- - provider: pages
-   skip_cleanup: true
-   github_token: $GITHUB_TOKEN # Set in travis-ci.org dashboard
-   local_dir: _bld_rel/site
-   keep-history: true
-   on:
-     branch: master
- - provider: pages
-   skip_cleanup: true
-   github_token: $GITHUB_TOKEN # Set in travis-ci.org dashboard
-   local_dir: _bld_rel/cste_math
-   keep-history: true
-   target-branch: built
-   on:
-     branch: master
 
 notifications:
   email: false
