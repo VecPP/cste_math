@@ -1,0 +1,24 @@
+workflows:
+  version: 2
+  build:
+    jobs:
+      - build:
+          filters:
+            branches:
+              ignore:
+                - gh-pages
+                - built
+          
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/python:3.7-stretch-browsers
+    steps:
+      - checkout
+      - run: git submodule update --init
+      - run:
+          name: Install dependencies
+          command: |
+            pip install mkdocs
+            mkdocs --version
