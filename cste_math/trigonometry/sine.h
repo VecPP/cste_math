@@ -49,12 +49,12 @@ constexpr T sine(const T& rad) {
   }
 
   if (r < -quarter_pi<long double>) {
-    return -cosine_pi4(r + half_pi<long double>);
+    return T(-cosine_pi4(r + half_pi<long double>));
   } else if (r > quarter_pi<long double>) {
-    return cosine_pi4(r - half_pi<long double>);
+    return T(cosine_pi4(r - half_pi<long double>));
   }
 
-  return sine_pi4(r);
+  return T(sine_pi4(r));
 }
 }
 
