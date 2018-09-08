@@ -37,7 +37,7 @@ constexpr T exponential(const T& v) {
   if(neg) { v_p = -v_p; }
 
   // separate integral and fractional components
-  uint32_t integral = round_down(v);
+  uint32_t integral = uint32_t(round_down(v));
   long double fract = v_p - integral;
 
   long double int_val = 1;
@@ -54,7 +54,7 @@ constexpr T exponential(const T& v) {
   long double fract_val = exp_details::recur_helper(fract, 1, 1, 1) + 1.0L;
 
   long double result = fract_val * int_val;
-  return neg ? T(1) / result : result;
+  return T(neg ? 1.0L / result : result);
 }
 
 }
