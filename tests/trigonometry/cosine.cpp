@@ -53,5 +53,11 @@ TEST_CASE("cosine(x), x > pi", "[cosine]") {
       REQUIRE_THAT(cste::cosine(v), WithinAbs(1.0, 1.e-15 * (double)i));
     }
   }
+}
 
+TEST_CASE("cosine(LARGE) can lead to an inf during constexpr eval", "[cosine][constexpr]") {
+  constexpr long double x = cste::cosine(cste::half_pi<long double>);
+  constexpr long double y = cste::cosine(-cste::half_pi<long double>);
+  (void)x;
+  (void)y;
 }
