@@ -53,6 +53,11 @@ namespace stdlib {
   }
 
   template<typename T>
+  constexpr T pow(const T& v, const T& p) {
+    return power(v, p);
+  }
+
+  template<typename T>
   constexpr T round(const T& arg) {
     return ::CSTE_MATH_NAMESPACE::round(arg);
   }
