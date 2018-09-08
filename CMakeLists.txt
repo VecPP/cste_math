@@ -13,15 +13,27 @@ option(CSTE_MATH_BUILD_TESTS "Build tests" OFF)
 option(CSTE_MATH_BUILD_PACKAGE "Build Release Package" OFF)
 
 SET(CSTE_MATH_HEADERS
-  include/cste_math/rounding/ceil.h
-  include/cste_math/rounding/floor.h
+  include/cste_math/calc/exponential.h
+  include/cste_math/calc/modulo.h
+  include/cste_math/calc/power.h
+  include/cste_math/calc/square_root.h
+
+  include/cste_math/misc/inf_nan.h
+  
+  include/cste_math/rounding/absolute.h
+  include/cste_math/rounding/round.h
+  include/cste_math/rounding/round_down.h
+  include/cste_math/rounding/round_up.h
+ 
+  include/cste_math/trigonometry/bound/cosine_pi4.h
+  include/cste_math/trigonometry/bound/sine_pi4.h
   include/cste_math/trigonometry/cosine.h
   include/cste_math/trigonometry/sine.h
+
   include/cste_math/config.h
   include/cste_math/constants.h
   include/cste_math/cste_math.h
-  include/cste_math/factorial.h
-  include/cste_math/modulo.h
+  include/cste_math/functions.h
 )
 
 if(CSTE_MATH_BUILD_DOCS)
