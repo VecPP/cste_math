@@ -1,5 +1,5 @@
-#ifndef CSTE_MATH_FLOOR_H_INCLUDED
-#define CSTE_MATH_FLOOR_H_INCLUDED
+#ifndef CSTE_MATH_ROUND_H_INCLUDED
+#define CSTE_MATH_ROUND_H_INCLUDED
 
 #include "cste_math/config.h"
 

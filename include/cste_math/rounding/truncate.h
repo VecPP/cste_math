@@ -1,5 +1,5 @@
-#ifndef CSTE_MATH_FLOOR_H_INCLUDED
-#define CSTE_MATH_FLOOR_H_INCLUDED
+#ifndef CSTE_MATH_TRUNCATE_H_INCLUDED
+#define CSTE_MATH_TRUNCATE_H_INCLUDED
 
 #include "cste_math/config.h"
 
@@ -13,18 +13,8 @@ namespace CSTE_MATH_NAMESPACE {
 
 template <typename T>
 constexpr T truncate(const T& v) {
-  constexpr T range_max = power(T(2), (std::numeric_limits<T>::digits - 1));
-  constexpr T range_min = -range_max;
-
-  if (v >= range_max || v <= range_min || is_nan(v)) {
-    return v;
-  }
-
   long long int x = static_cast<long long int>(v);
-  if (v == T(x) || v > T(0)) {
-    return T(x);
-  }
-  return T(x - 1);
+  return T(x);
 }
 }  // namespace CSTE_MATH_NAMESPACE
 
