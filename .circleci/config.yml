@@ -40,6 +40,12 @@ jobs:
           command: |
             . venv/bin/activate
             mkdocs build
+      - run:
+          name: build single header
+          command: |
+            . venv/bin/activate
+            cd include
+            python3 ../tools/header_compiler/header_compiler.py --output=cste_math/cste_math_single.h --notice=../misc/notice.txt --header_guard="CSTE_MATH_SINGLE_INCLUDE_H_" --input=cste_math/cste_math.h
 
       - deploy: # run tests
           name: deploy docs
