@@ -22,6 +22,7 @@ SET(CSTE_MATH_HEADERS
   include/cste_math/misc/sign.h
   
   include/cste_math/rounding/absolute.h
+  include/cste_math/rounding/fractional.h
   include/cste_math/rounding/round.h
   include/cste_math/rounding/round_down.h
   include/cste_math/rounding/round_up.h
