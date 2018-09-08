@@ -79,7 +79,7 @@ jobs:
             git rm -rf .
             cd ..
 
-            cp -a include/. out/.
+            cp -a include/cste_math. out/.
 
             mkdir -p out/.circleci && cp -a .circleci/. out/.circleci/.
             cp .appveyor.yml ./out/
