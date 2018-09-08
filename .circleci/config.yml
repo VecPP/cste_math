@@ -63,6 +63,7 @@ jobs:
             cp -a site/. out/.
 
             mkdir -p out/.circleci && cp -a .circleci/. out/.circleci/.
+            cp .appveyor.yml ./out/
             cd out
 
             git add -A
@@ -81,9 +82,10 @@ jobs:
             cp -a include/. out/.
 
             mkdir -p out/.circleci && cp -a .circleci/. out/.circleci/.
+            cp .appveyor.yml ./out/
             cd out
 
             git add -A
-            git commit -m "Automated deployment to GitHub Pages: ${CIRCLE_SHA1}" --allow-empty
+            git commit -m "Automated deployment to Built Lib: ${CIRCLE_SHA1}" --allow-empty
 
             git push origin $BUILT_BRANCH
