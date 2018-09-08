@@ -32,6 +32,7 @@ SET(CSTE_MATH_HEADERS
   include/cste_math/trigonometry/bound/sine_pi4.h
   include/cste_math/trigonometry/cosine.h
   include/cste_math/trigonometry/sine.h
+  include/cste_math/trigonometry/tangent.h
 
   include/cste_math/config.h
   include/cste_math/constants.h

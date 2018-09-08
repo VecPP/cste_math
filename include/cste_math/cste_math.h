@@ -27,5 +27,6 @@
 
 #include "cste_math/trigonometry/cosine.h"
 #include "cste_math/trigonometry/sine.h"
+#include "cste_math/trigonometry/tangent.h"
 
 #include "cste_math/stdlib.h"

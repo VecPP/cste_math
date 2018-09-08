@@ -72,6 +72,20 @@ namespace stdlib {
     return square_root(arg);
   }
 
+  template<typename T>
+  constexpr T sin(const T& arg) {
+    return sine(arg);
+  }
+
+  template<typename T>
+  constexpr T cos(const T& arg) {
+    return cosine(arg);
+  }
+
+  template<typename T>
+  constexpr T tan(const T& arg) {
+    return tangent(arg);
+  }
   
 }
 
