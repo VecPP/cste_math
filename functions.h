@@ -12,6 +12,14 @@
 
 namespace CSTE_MATH_NAMESPACE {
 
+// ************************** Misc Functions ************************** //
+template <typename T>
+constexpr T sign(const T& v);
+template <typename T>
+constexpr bool is_nan(const T& v);
+template <typename T>
+constexpr bool is_inf(const T& v);
+
 // ************************** Rounding Functions ************************** //
 template <typename T>
 constexpr T absolute(const T& v);
@@ -21,6 +29,8 @@ template <typename T>
 constexpr T round_down(const T& v);
 template <typename T>
 constexpr T round_up(const T& v);
+template <typename T>
+constexpr T truncate(const T& v);
 
 // ************************ Trigonometry Functions ************************ //
 template <typename T>

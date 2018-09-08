@@ -12,10 +12,16 @@
 
 #include "cste_math/calc/exponential.h"
 
+#include "cste_math/misc/inf_nan.h"
+#include "cste_math/misc/sign.h"
+
 #include "cste_math/rounding/absolute.h"
 #include "cste_math/rounding/round.h"
 #include "cste_math/rounding/round_down.h"
 #include "cste_math/rounding/round_up.h"
+#include "cste_math/rounding/truncate.h"
 
 #include "cste_math/trigonometry/cosine.h"
 #include "cste_math/trigonometry/sine.h"
+
+#include "cste_math/stdlib.h"
