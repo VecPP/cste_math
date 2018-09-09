@@ -6,6 +6,14 @@
 
 All you need is a standard compliant C++17 compiler.
 
+### include
+cste_math is a header-only library. As such, all you need to do is make the 
+contents of the `include` directory available to your compiler.
+
+### single-include
+Alternatively, you can simply copy "cste_math_single.h" into your project and use 
+that single freestanding header.
+
 ## Reference
 
 ### Constants
