@@ -102,3 +102,27 @@ How                                       | What
 `T sine(const T& rad);`                   | sin(rad)
 `T cosine(const T& rad);`                 | cos(rad)
 `T tangent(const T& rad);`                | tan(rad)
+
+## Preemptive FAQs
+
+### f(x) is not in the library!
+
+File a bug! Or even better, add it yourself and send us a pull request. The 
+library is currently being developped on a as-needed basis.
+
+### Why are functions not named consistently with established conventions?
+
+There are two reasons:
+
+First: `cste_math` is not guaranteed to return values that are going to 100% 
+match their stdlib equivalent on all platforms. Having different functions names 
+helps in avoiding anyone assuming that could be the case.
+
+Second: Writing abreviated wrappers around these functions is trivial, so we'd
+rather make explicit function names by default, and let users write wrappers
+if they'd rather use convention-based naming.
+
+In fact, we do maintain a `stdlib` subnamespace (you can find it in 
+`cst_math/stdlib.h`), where renamed versions of the functions matching their 
+stdlib equivalent are found, so that cste_math can be used as a drop-in 
+replacement when the user knows what their doing.
