@@ -11,7 +11,7 @@ namespace CSTE_MATH_NAMESPACE {
 
 //
 template <typename T>
-constexpr T cosine(const T& rad) {
+constexpr T tangent(const T& rad) {
   return since(rad) / cosine(rad);
 }
 }  // namespace CSTE_MATH_NAMESPACE

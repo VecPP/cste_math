@@ -61,6 +61,8 @@ constexpr T sine(const T&);
 template <typename T>
 constexpr T cosine(const T&);
 template <typename T>
+constexpr T tangent(const T&);
+template <typename T>
 constexpr T exponential(const T& v);
 template <typename T>
 constexpr T modulo(const T& val, const T& div);
@@ -366,7 +368,7 @@ constexpr T sine(const T& rad) {
 
 namespace CSTE_MATH_NAMESPACE {
 template <typename T>
-constexpr T cosine(const T& rad) {
+constexpr T tangent(const T& rad) {
   return since(rad) / cosine(rad);
 }
 }  // namespace CSTE_MATH_NAMESPACE
