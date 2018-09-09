@@ -15,9 +15,20 @@
 // This file provides an api matching the C++ stdlib as much as possible, so 
 // that cste_math can be used as a drop-in replacement.
 
+// IMPORTANT: `cste_math` is not guaranteed to return values that are going to 100% 
+// match their stdlib equivalent on all platforms.
+//
+// void foo() {
+//   constexpr float val = cste::stdlib::sin(2.0f);
+//   assert(val == std::sin(val)); // Maybe, and not consistent! 
+// }
+
+//
+//
 // Note that only functions that are not guaranteed to be constexpr will be
 // overloaded here. For functions like std::min() and std::max(), which are
 // already constexpr, the stdlib version should be used instead.
+
 
 namespace CSTE_MATH_NAMESPACE {
 
