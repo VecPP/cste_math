@@ -52,11 +52,161 @@
         <div class="container">
                 <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#cste_math">cste_math</a></li>
+            <li><a href="#installation">Installation</a></li>
+            <li><a href="#reference">Reference</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
 
-</div>
+<h1 id="cste_math">cste_math</h1>
+<h2 id="installation">Installation</h2>
+<h3 id="prerequisites">Prerequisites</h3>
+<p>All you need is a standard compliant C++17 compiler.</p>
+<h2 id="reference">Reference</h2>
+<h3 id="constants">Constants</h3>
+<table>
+<thead>
+<tr>
+<th>How</th>
+<th>What</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>e&lt;T&gt;</code></td>
+<td>e</td>
+</tr>
+<tr>
+<td><code>pi&lt;T&gt;</code></td>
+<td>π</td>
+</tr>
+<tr>
+<td><code>two_pi&lt;T&gt;</code></td>
+<td>2π</td>
+</tr>
+<tr>
+<td><code>half_pi&lt;T&gt;</code></td>
+<td>π/2</td>
+</tr>
+<tr>
+<td><code>quarter_pi&lt;T&gt;</code></td>
+<td>π/4</td>
+</tr>
+<tr>
+<td><code>two_pi&lt;T&gt;</code></td>
+<td>2π</td>
+</tr>
+</tbody>
+</table>
+<h3 id="calculus">Calculus</h3>
+<table>
+<thead>
+<tr>
+<th>How</th>
+<th>What</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>T absolute(const T&amp; x);</code></td>
+<td>|x|</td>
+</tr>
+<tr>
+<td><code>T exponential(const T&amp; x);</code></td>
+<td>e<sup>x</sup></td>
+</tr>
+<tr>
+<td><code>T modulo(const T&amp; x, const T&amp; y);</code></td>
+<td>remainder of x/y</td>
+</tr>
+<tr>
+<td><code>T power(const T&amp; x, const T&amp; y);</code></td>
+<td>x<sup>y</sup></td>
+</tr>
+<tr>
+<td><code>T square_root(const T&amp; x);</code></td>
+<td>√x</td>
+</tr>
+</tbody>
+</table>
+<h3 id="number-identification">Number identification</h3>
+<table>
+<thead>
+<tr>
+<th>How</th>
+<th>What</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>bool is_inf(const T&amp; x);</code></td>
+<td>Checks for infinity</td>
+</tr>
+<tr>
+<td><code>bool is_nan(const T&amp; x);</code></td>
+<td>Checks for nan</td>
+</tr>
+<tr>
+<td><code>T sign(const T&amp; x);</code></td>
+<td>negative: -1, positive: 1, zero: 0</td>
+</tr>
+</tbody>
+</table>
+<h3 id="rounding">Rounding</h3>
+<table>
+<thead>
+<tr>
+<th>How</th>
+<th>What</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>T round_up(const T&amp; x);</code></td>
+<td>round number up</td>
+</tr>
+<tr>
+<td><code>T round_down(const T&amp; x);</code></td>
+<td>round number down</td>
+</tr>
+<tr>
+<td><code>T round(const T&amp; x);</code></td>
+<td>round number to closest integer</td>
+</tr>
+<tr>
+<td><code>T truncate(const T&amp; x);</code></td>
+<td>round number towards 0</td>
+</tr>
+<tr>
+<td><code>T fractional(const T&amp; x);</code></td>
+<td>The fractional part of the number</td>
+</tr>
+</tbody>
+</table>
+<h3 id="trigonometry-functions">Trigonometry functions</h3>
+<table>
+<thead>
+<tr>
+<th>How</th>
+<th>What</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>T sine(const T&amp; rad);</code></td>
+<td>sin(rad)</td>
+</tr>
+<tr>
+<td><code>T cosine(const T&amp; rad);</code></td>
+<td>cos(rad)</td>
+</tr>
+<tr>
+<td><code>T tangent(const T&amp; rad);</code></td>
+<td>tan(rad)</td>
+</tr>
+</tbody>
+</table></div>
         </div>
 
         <footer class="col-md-12">
@@ -139,5 +289,5 @@
 
 <!--
 MkDocs version : 1.0.4
-Build Date UTC : 2018-09-09 01:48:43
+Build Date UTC : 2018-09-09 02:45:57
 -->
