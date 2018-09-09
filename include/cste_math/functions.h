@@ -39,6 +39,8 @@ template <typename T>
 constexpr T sine(const T&);
 template <typename T>
 constexpr T cosine(const T&);
+template <typename T>
+constexpr T tangent(const T&);
 
 // ************************** Calculus Functions ************************** //
 template <typename T>
