@@ -1,6 +1,7 @@
 # cste_math
 
-constexpr scalar math.
+constexpr scalar math. The ambition is to provide < 1 ULP precision for any 
+float-like type.
 
 [![Build Status](https://travis-ci.com/VecPP/cste_math.svg?branch=master)](https://travis-ci.com/VecPP/cste_math)
 [![CircleCI](https://circleci.com/gh/VecPP/cste_math.svg?style=svg)](https://circleci.com/gh/VecPP/cste_math)
@@ -19,15 +20,7 @@ constexpr float val_2 = cm::square_root(3.0f);
 
 ### Prerequisites
 
-All you need is a standard compliant C++17 compiler. The library is 
-sytematically tested on the following compilers, but that does not mean that 
-earlier versions will not work.
-
-Compiler | Version
----------|--------
-GCC      | 7.3.0
-clang    | 6.0.0
-MSVC     | 14.15.26726
+All you need is a standard compliant C++17 compiler.
 
 ### Installation
 
@@ -102,6 +95,16 @@ How                                       | What
 `T sine(const T& rad);`                   | sin(rad)
 `T cosine(const T& rad);`                 | cos(rad)
 `T tangent(const T& rad);`                | tan(rad)
+
+## Library Internals
+
+### Priorities
+
+Implementations are evaluated using the following criteria, in strict order:
+
+- constexprness
+- precision
+- performance
 
 ## Preemptive FAQs
 

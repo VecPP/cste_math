@@ -6,6 +6,8 @@ set_target_properties(catch_main PROPERTIES FOLDER "tests")
 SET( CSTE_MATH_TESTS
   calc/exponential.cpp
 
+  misc/decompose_real.cpp
+
   rounding/round_up.cpp
   rounding/round_down.cpp
 

@@ -15,6 +15,7 @@
 #include "cste_math/calc/power.h"
 #include "cste_math/calc/square_root.h"
 
+#include "cste_math/misc/decompose_real.h"
 #include "cste_math/misc/inf_nan.h"
 #include "cste_math/misc/sign.h"
 

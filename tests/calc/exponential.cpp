@@ -24,6 +24,6 @@ TEST_CASE("basic exponential usage", "[exp][basic]") {
   REQUIRE(cste::exponential(0.0) == 1.0);
   REQUIRE(cste::exponential(1.0) == cste::e<double>);
 
-  std::cout << cste::exponential(1000000.0) << "\n";
-  std::cout << std::exp(1000000.0) << "\n";
+  std::cout << cste::exponential(300.0) << "\n";
+  std::cout << std::exp(300.0) << "\n";
 }

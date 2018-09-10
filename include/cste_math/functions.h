@@ -10,9 +10,13 @@
 
 #include "cste_math/config.h"
 
+#include <tuple>
+
 namespace CSTE_MATH_NAMESPACE {
 
 // ************************** Misc Functions ************************** //
+template <typename T>
+constexpr std::tuple<T, int> decompose_real(const T& v);
 template <typename T>
 constexpr T sign(const T& v);
 template <typename T>

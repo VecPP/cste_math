@@ -3,9 +3,11 @@
 
 #include "cste_math/config.h"
 
-#include <cassert>
-#include <cmath>
-#include <limits>
+#include "cste_math/rounding/absolute.h"
+#include "cste_math/calc/exponential.h"
+#include "cste_math/calc/natural_logarithm.h"
+
+#include <type_traits>
 
 namespace CSTE_MATH_NAMESPACE {
 
@@ -13,15 +15,22 @@ namespace CSTE_MATH_NAMESPACE {
 template <typename T, typename U>
 constexpr T power(const T& v, const U& p) {
   if constexpr (std::is_integral<U>()) {
-    T result = 1;
-    for (U i = 0; i < p; ++i) {
-      result *= v;
+    U raise = absolute(p);
+    T factor = v;
+
+    T result = T(1);
+    while(raise > 0) {
+      if(raise & 1) {
+        result *= factor;
+      }
+      factor *= factor;
+      raise >>=1;
     }
     return result;
   } else {
-    assert(false);
-    return v;
-  }
+    //probably a fair bit of precision being lost here...
+    return natural_logarithm(exponential(v) * p);
+   }
 }
 }  // namespace CSTE_MATH_NAMESPACE
 

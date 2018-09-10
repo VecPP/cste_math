@@ -30,7 +30,10 @@ constexpr long double recur_helper(long double x, long double num,
   return factor + recur_helper(x, num, fact, i + 1);
 }
 }  // namespace exp_details
+
 // Raises e by the operand
+
+//TODO: when passed an integral, it should return some high-precision float.
 template <typename T>
 constexpr T exponential(const T& v) {
   long double v_p = v;
@@ -51,7 +54,7 @@ constexpr T exponential(const T& v) {
     }
 
     integral >>= 1;
-    e_fact *= e<long double>;
+    e_fact *= e_fact;
   }
 
   long double fract_val = exp_details::recur_helper(fract, 1, 1, 1) + 1.0L;

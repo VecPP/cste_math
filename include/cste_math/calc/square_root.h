@@ -18,7 +18,7 @@ constexpr T square_root(const T& v) {
   }
 
   T r = v;
-  // A simple newton-rhapson for now.
+
   while (1) {
     T tmp = (r + v / r) / T(2);
     if (tmp == r) {
