@@ -8,9 +8,9 @@
 #ifndef CSTE_STDLIB_H_INCLUDED
 #define CSTE_STDLIB_H_INCLUDED
 
-#include "cste_math/config.h"
+#include "vecpp/cste_math/config.h"
 
-#include "cste_math/functions.h"
+#include "vecpp/cste_math/functions.h"
 
 // This file provides an api matching the C++ stdlib as much as possible, so 
 // that cste_math can be used as a drop-in replacement.

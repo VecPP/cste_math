@@ -5,28 +5,28 @@
 //  (See accompanying file LICENSE or copy at
 //  http://www.boost.org/LICENSE_1_0.txt)
 
-#include "cste_math/config.h"
+#include "vecpp/cste_math/config.h"
 
-#include "cste_math/constants.h"
-#include "cste_math/functions.h"
+#include "vecpp/cste_math/constants.h"
+#include "vecpp/cste_math/functions.h"
 
-#include "cste_math/calc/exponential.h"
-#include "cste_math/calc/modulo.h"
-#include "cste_math/calc/power.h"
-#include "cste_math/calc/square_root.h"
+#include "vecpp/cste_math/calc/exponential.h"
+#include "vecpp/cste_math/calc/modulo.h"
+#include "vecpp/cste_math/calc/power.h"
+#include "vecpp/cste_math/calc/square_root.h"
 
-#include "cste_math/misc/inf_nan.h"
-#include "cste_math/misc/sign.h"
+#include "vecpp/cste_math/misc/inf_nan.h"
+#include "vecpp/cste_math/misc/sign.h"
 
-#include "cste_math/rounding/absolute.h"
-#include "cste_math/rounding/fractional.h"
-#include "cste_math/rounding/round.h"
-#include "cste_math/rounding/round_down.h"
-#include "cste_math/rounding/round_up.h"
-#include "cste_math/rounding/truncate.h"
+#include "vecpp/cste_math/rounding/absolute.h"
+#include "vecpp/cste_math/rounding/fractional.h"
+#include "vecpp/cste_math/rounding/round.h"
+#include "vecpp/cste_math/rounding/round_down.h"
+#include "vecpp/cste_math/rounding/round_up.h"
+#include "vecpp/cste_math/rounding/truncate.h"
 
-#include "cste_math/trigonometry/cosine.h"
-#include "cste_math/trigonometry/sine.h"
-#include "cste_math/trigonometry/tangent.h"
+#include "vecpp/cste_math/trigonometry/cosine.h"
+#include "vecpp/cste_math/trigonometry/sine.h"
+#include "vecpp/cste_math/trigonometry/tangent.h"
 
-#include "cste_math/stdlib.h"
+#include "vecpp/cste_math/stdlib.h"

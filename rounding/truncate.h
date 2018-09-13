@@ -1,10 +1,10 @@
 #ifndef CSTE_MATH_TRUNCATE_H_INCLUDED
 #define CSTE_MATH_TRUNCATE_H_INCLUDED
 
-#include "cste_math/config.h"
+#include "vecpp/cste_math/config.h"
 
-#include "cste_math/calc/power.h"
-#include "cste_math/misc/inf_nan.h"
+#include "vecpp/cste_math/calc/power.h"
+#include "vecpp/cste_math/misc/inf_nan.h"
 
 #include <cmath>
 #include <limits>
