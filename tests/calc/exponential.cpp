@@ -1,9 +1,9 @@
 #include "catch.hpp"
 
 #ifdef CSTE_MATH_TEST_SINGLE_HEADER
-#include "cste_math/cste_math_single.h"
+#include "vecpp/cste_math/cste_math_single.h"
 #else
-#include "cste_math/cste_math.h"
+#include "vecpp/cste_math/cste_math.h"
 #endif
 
 #include <cmath>
@@ -23,7 +23,4 @@ TEST_CASE("exponential is constexpr", "[exp][constexpr]") {
 TEST_CASE("basic exponential usage", "[exp][basic]") {
   REQUIRE(cste::exponential(0.0) == 1.0);
   REQUIRE(cste::exponential(1.0) == cste::e<double>);
-
-  std::cout << cste::exponential(1000000.0) << "\n";
-  std::cout << std::exp(1000000.0) << "\n";
 }

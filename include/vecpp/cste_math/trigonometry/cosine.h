@@ -1,13 +1,13 @@
 #ifndef CSTE_MATH_TRIGNOMETRY_COSINE_H_INCLUDED
 #define CSTE_MATH_TRIGNOMETRY_COSINE_H_INCLUDED
 
-#include "cste_math/config.h"
+#include "vecpp/cste_math/config.h"
 
-#include "cste_math/calc/modulo.h"
-#include "cste_math/constants.h"
-#include "cste_math/misc/inf_nan.h"
-#include "cste_math/trigonometry/bound/cosine_pi4.h"
-#include "cste_math/trigonometry/bound/sine_pi4.h"
+#include "vecpp/cste_math/calc/modulo.h"
+#include "vecpp/cste_math/constants.h"
+#include "vecpp/cste_math/misc/inf_nan.h"
+#include "vecpp/cste_math/trigonometry/bound/cosine_pi4.h"
+#include "vecpp/cste_math/trigonometry/bound/sine_pi4.h"
 
 #include <iomanip>
 #include <iostream>

@@ -8,7 +8,7 @@
 #ifndef CSTE_CONSTANTS_H_INCLUDED
 #define CSTE_CONSTANTS_H_INCLUDED
 
-#include "cste_math/config.h"
+#include "vecpp/cste_math/config.h"
 
 namespace CSTE_MATH_NAMESPACE {
 

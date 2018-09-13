@@ -1,10 +1,10 @@
 #ifndef CSTE_MATH_CALC_EXP_H_INCLUDED
 #define CSTE_MATH_CALC_EXP_H_INCLUDED
 
-#include "cste_math/config.h"
+#include "vecpp/cste_math/config.h"
 
-#include "cste_math/constants.h"
-#include "cste_math/rounding/round_down.h"
+#include "vecpp/cste_math/constants.h"
+#include "vecpp/cste_math/rounding/round_down.h"
 
 #include <cassert>
 #include <cmath>

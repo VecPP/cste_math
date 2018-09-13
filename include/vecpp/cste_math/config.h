@@ -5,8 +5,8 @@
 //  (See accompanying file LICENSE or copy at
 //  http://www.boost.org/LICENSE_1_0.txt)
 
-#ifndef CSTE_MATH_CONFIG_H_INCLUDED
-#define CSTE_MATH_CONFIG_H_INCLUDED
+#ifndef VECPP_CSTE_MATH_CONFIG_H_INCLUDED
+#define VECPP_CSTE_MATH_CONFIG_H_INCLUDED
 
 #ifdef _MSVC_LANG
 #if _MSVC_LANG < 201703L

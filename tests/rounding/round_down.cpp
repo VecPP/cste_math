@@ -1,9 +1,9 @@
 #include "catch.hpp"
 
 #ifdef CSTE_MATH_TEST_SINGLE_HEADER
-#include "cste_math/cste_math_single.h"
+#include "vecpp/cste_math/cste_math_single.h"
 #else
-#include "cste_math/cste_math.h"
+#include "vecpp/cste_math/cste_math.h"
 #endif
 
 #include <cmath>

@@ -1,9 +1,9 @@
 #ifndef CSTE_MATH_TRIGNOMETRY_COSINE_PI4_H_INCLUDED
 #define CSTE_MATH_TRIGNOMETRY_COSINE_PI4_H_INCLUDED
 
-#include "cste_math/config.h"
+#include "vecpp/cste_math/config.h"
 
-#include "cste_math/constants.h"
+#include "vecpp/cste_math/constants.h"
 
 #include <cassert>
 
