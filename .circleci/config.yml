@@ -45,7 +45,7 @@ jobs:
           command: |
             . venv/bin/activate
             cd include
-            python3 ../tools/header_compiler/header_compiler.py --output=cste_math/cste_math_single.h --notice=../misc/notice.txt --header_guard="CSTE_MATH_SINGLE_INCLUDE_H_" --input=cste_math/cste_math.h
+            python3 ../tools/header_compiler/header_compiler.py --output=vecpp/cste_math/cste_math_single.h --notice=../misc/notice.txt --header_guard="CSTE_MATH_SINGLE_INCLUDE_H_" --input=vecpp/cste_math/cste_math.h
 
       - deploy: # run tests
           name: deploy docs
@@ -79,7 +79,7 @@ jobs:
             git rm -rf .
             cd ..
 
-            cp -a include/cste_math/. out/.
+            cp -a include/vecpp/cste_math/. out/.
 
             mkdir -p out/.circleci && cp -a .circleci/. out/.circleci/.
             cp .appveyor.yml ./out/
