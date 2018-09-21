@@ -125,4 +125,4 @@ if they'd rather use convention-based naming.
 In fact, we do maintain a `stdlib` subnamespace (you can find it in 
 `cst_math/stdlib.h`), where renamed versions of the functions matching their 
 stdlib equivalent are found, so that cste_math can be used as a drop-in 
-replacement when the user knows what their doing.
+replacement when the user knows what they're doing.
