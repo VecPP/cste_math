@@ -118,7 +118,7 @@ First: `cste_math` is not guaranteed to return values that are going to 100%
 match their stdlib equivalent on all platforms. Having different functions names 
 helps in avoiding anyone assuming that could be the case.
 
-Second: Writing abreviated wrappers around these functions is trivial, so we'd
+Second: Writing abbreviated wrappers around these functions is trivial, so we'd
 rather make explicit function names by default, and let users write wrappers
 if they'd rather use convention-based naming.
 
