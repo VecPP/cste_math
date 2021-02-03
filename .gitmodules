@@ -1,3 +1,0 @@
-[submodule "tools/header_compiler"]
-	path = tools/header_compiler
-	url = https://github.com/FrancoisChabot/header_compiler.git

@@ -1,17 +1,25 @@
+//  Copyright 2020 Francois Chabot
+//  (francois.chabot.dev@gmail.com)
+//
+//  Distributed under the Boost Software License, Version 1.0.
+//  (See accompanying file LICENSE or copy at
+//  http://www.boost.org/LICENSE_1_0.txt)
+
 #ifndef CSTE_MATH_CALC_EXP_H_INCLUDED
 #define CSTE_MATH_CALC_EXP_H_INCLUDED
 
 #include "vecpp/cste_math/config.h"
 
 #include "vecpp/cste_math/constants.h"
-#include "vecpp/cste_math/rounding/round_down.h"
+#include "vecpp/cste_math/ct/rounding/round_down.h"
 
 #include <cassert>
 #include <cmath>
 #include <limits>
+#include <cstdint>
 
 namespace CSTE_MATH_NAMESPACE {
-
+namespace ct {
 namespace exp_details {
 // e^x = 1 + x + x^2/2! + x^3/3! + ...
 
@@ -40,7 +48,7 @@ constexpr T exponential(const T& v) {
   }
 
   // separate integral and fractional components
-  uint32_t integral = uint32_t(round_down(v));
+  std::uint64_t integral = std::uint64_t(round_down(v_p));
   long double fract = v_p - integral;
 
   long double int_val = 1;
@@ -59,7 +67,7 @@ constexpr T exponential(const T& v) {
   long double result = fract_val * int_val;
   return T(neg ? 1.0L / result : result);
 }
-
+}  // namespace ct
 }  // namespace CSTE_MATH_NAMESPACE
 
 #endif

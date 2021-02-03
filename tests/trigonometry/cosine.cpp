@@ -1,63 +1,51 @@
-#include "catch.hpp"
+#include "doctest.h"
 
-#ifdef CSTE_MATH_TEST_SINGLE_HEADER
-#include "vecpp/cste_math/cste_math_single.h"
-#else
 #include "vecpp/cste_math/cste_math.h"
-#endif
 
 #include <cmath>
-#include <cstring>
-#include <iostream>
-#include <iomanip>
 
-using Catch::Matchers::WithinULP;
-using Catch::Matchers::WithinAbs;
+using cste::ct::cosine;
 
-TEST_CASE("cosine is constexpr", "[cosine][constexpr]") {
-  constexpr float x = cste::cosine(0.0f);
-  constexpr double y = cste::cosine(0.0);
-  constexpr long double z = cste::cosine(0.0L);
+TEST_CASE("sine is constexpr") {
+  constexpr float x = cosine(0.0f);
+  constexpr double y = cosine(0.0);
+  constexpr long double z = cosine(0.0L);
 
   (void)x;
   (void)y;
   (void)z;
 }
 
-TEST_CASE("basic cosine usage", "[cosine][basic]") {
-  REQUIRE_THAT(cste::cosine(0.0), WithinULP(std::cos(0.0), 1));
+TEST_CASE("basic sine usage") {
+  CHECK(cosine(0.0) == std::cos(0.0));
 
   // past 0
-  REQUIRE_THAT(cste::cosine(0.2), WithinULP(std::cos(0.2), 1));
-  REQUIRE_THAT(cste::cosine(-0.2), WithinULP(std::cos(-0.2), 1));
+  CHECK(cosine(0.2) == doctest::Approx(std::cos(0.2)));
+  CHECK(cosine(-0.2) == doctest::Approx(std::cos(-0.2)));
 
   // Past pi/4
-  REQUIRE_THAT(cste::cosine(1.14), WithinULP(std::cos(1.14), 1));  
-  REQUIRE_THAT(cste::cosine(-1.14), WithinULP(std::cos(-1.14), 1));
+  CHECK(cosine(1.14) == doctest::Approx(std::cos(1.14)));
+  CHECK(cosine(-1.14) == doctest::Approx(std::cos(-1.14)));
 }
 
-TEST_CASE("cosine(x), x > pi/2", "[cosine]") {
-  REQUIRE_THAT(cste::cosine(2.5), WithinULP(std::cos(2.5), 1));
-  REQUIRE_THAT(cste::cosine(-2.5), WithinULP(std::cos(-2.5), 1));  
+TEST_CASE("sine(x), x > pi/2") {
+  CHECK(cosine(2.5) == doctest::Approx(std::cos(2.5)));
+  CHECK(cosine(-2.5) == doctest::Approx(std::cos(-2.5)));
 }
 
-TEST_CASE("cosine(x), x > pi", "[cosine]") {
-  for(int i = 1 ; i < 100000; i ++) {
+TEST_CASE("sine(x), x > pi") {
+  for (int i = 1; i < 100000; i++) {
     double v = cste::pi<double> * i;
+
     // This is not great, but the idea is that we try to roughly account
     // for the error in i*pi
-    if(i % 2) {
-      REQUIRE_THAT(cste::cosine(v), WithinAbs(-1.0, 1.e-15 * (double)i));
-    }
-    else {
-      REQUIRE_THAT(cste::cosine(v), WithinAbs(1.0, 1.e-15 * (double)i));
-    }
+    CHECK(cosine(v) == doctest::Approx(std::cos(v)));
   }
 }
 
-TEST_CASE("cosine(LARGE) can lead to an inf during constexpr eval", "[cosine][constexpr]") {
-  constexpr long double x = cste::cosine(cste::half_pi<long double>);
-  constexpr long double y = cste::cosine(-cste::half_pi<long double>);
+TEST_CASE("cosine(LARGE) can lead to an inf during constexpr eval") {
+  constexpr long double x = cosine(cste::half_pi<long double>);
+  constexpr long double y = cosine(-cste::half_pi<long double>);
   (void)x;
   (void)y;
 }

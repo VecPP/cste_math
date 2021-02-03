@@ -1,53 +1,46 @@
-#include "catch.hpp"
+#include "doctest.h"
 
-#ifdef CSTE_MATH_TEST_SINGLE_HEADER
-#include "vecpp/cste_math/cste_math_single.h"
-#else
 #include "vecpp/cste_math/cste_math.h"
-#endif
 
 #include <cmath>
-#include <cstring>
-#include <iostream>
-#include <iomanip>
 
-using Catch::Matchers::WithinULP;
-using Catch::Matchers::WithinAbs;
+using cste::ct::sine;
 
-TEST_CASE("sine is constexpr", "[sine][constexpr]") {
-  constexpr float x = cste::sine(0.0f);
-  constexpr double y = cste::sine(0.0);
-  constexpr long double z = cste::sine(0.0L);
+
+TEST_CASE("sine is constexpr") {
+  constexpr float x = sine(0.0f);
+  constexpr double y = sine(0.0);
+  constexpr long double z = sine(0.0L);
 
   (void)x;
   (void)y;
   (void)z;
 }
 
-TEST_CASE("basic sine usage", "[sine][basic]") {
-  REQUIRE_THAT(cste::sine(0.0), WithinULP(std::sin(0.0), 1));
+TEST_CASE("basic sine usage") {
+  CHECK(sine(0.0) == std::sin(0.0));
 
   // past 0
-  REQUIRE_THAT(cste::sine(0.2), WithinULP(std::sin(0.2), 1));
-  REQUIRE_THAT(cste::sine(-0.2), WithinULP(std::sin(-0.2), 1));
+  CHECK(sine(0.2) == doctest::Approx(std::sin(0.2)));
+  CHECK(sine(-0.2) == doctest::Approx(std::sin(-0.2)));
 
   // Past pi/4
-  REQUIRE_THAT(cste::sine(1.14), WithinULP(std::sin(1.14), 1));  
-  REQUIRE_THAT(cste::sine(-1.14), WithinULP(std::sin(-1.14), 1));
+  CHECK(sine(1.14) == doctest::Approx(std::sin(1.14)));
+  CHECK(sine(-1.14) == doctest::Approx(std::sin(-1.14)));
 }
 
-TEST_CASE("sine(x), x > pi/2", "[sine]") {
-  REQUIRE_THAT(cste::sine(2.5), WithinULP(std::sin(2.5), 1));
-  REQUIRE_THAT(cste::sine(-2.5), WithinULP(std::sin(-2.5), 1));  
+TEST_CASE("sine(x), x > pi/2") {
+  CHECK(sine(2.5) == doctest::Approx(std::sin(2.5)));
+  CHECK(sine(-2.5) == doctest::Approx(std::sin(-2.5)));
 }
 
-TEST_CASE("sine(x), x > pi", "[sine]") {
+TEST_CASE("sine(x), x > pi") {
   for(int i = 1 ; i < 100000; i ++) {
     double v = cste::pi<double> * i;
 
     // This is not great, but the idea is that we try to roughly account
     // for the error in i*pi
-    REQUIRE_THAT(cste::sine(v), WithinAbs(0.0, 1.e-15 * (double)i));
+    CHECK(sine(v) == doctest::Approx(std::sin(v)));
   }
 
 }

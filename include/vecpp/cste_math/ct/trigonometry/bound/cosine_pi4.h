@@ -1,3 +1,10 @@
+//  Copyright 2020 Francois Chabot
+//  (francois.chabot.dev@gmail.com)
+//
+//  Distributed under the Boost Software License, Version 1.0.
+//  (See accompanying file LICENSE or copy at
+//  http://www.boost.org/LICENSE_1_0.txt)
+
 #ifndef CSTE_MATH_TRIGNOMETRY_COSINE_PI4_H_INCLUDED
 #define CSTE_MATH_TRIGNOMETRY_COSINE_PI4_H_INCLUDED
 
@@ -31,7 +38,7 @@ constexpr long double recur_helper(long double r_2, long double num,
 }
 }  // namespace cosine_detail
 
-// Evaluates sin(x) in the [-PI/4, PI/4] range
+// Evaluates cos(x) in the [-PI/4, PI/4] range
 template <typename T>
 constexpr T cosine_pi4(const T& rad) {
   assert(rad >= -quarter_pi<T> && rad <= quarter_pi<T>);

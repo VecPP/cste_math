@@ -1,44 +1,13 @@
 cmake_minimum_required(VERSION 3.9)
 
 project(cste_math 
-  VERSION 0.1
+  VERSION 0.2
   DESCRIPTION "C++ constexpr math"
   LANGUAGES CXX)
 
-set_property(GLOBAL PROPERTY USE_FOLDERS ON)
-
-option(CSTE_MATH_BUILD_SINGLE_HEADER "Build the cste_math_single.h header" OFF)
 option(CSTE_MATH_BUILD_DOCS "Build documentation" OFF)
 option(CSTE_MATH_BUILD_TESTS "Build tests" OFF)
 option(CSTE_MATH_BUILD_PACKAGE "Build Release Package" OFF)
-
-SET(CSTE_MATH_HEADERS
-  include/vecpp/cste_math/calc/exponential.h
-  include/vecpp/cste_math/calc/modulo.h
-  include/vecpp/cste_math/calc/power.h
-  include/vecpp/cste_math/calc/square_root.h
-
-  include/vecpp/cste_math/misc/inf_nan.h
-  include/vecpp/cste_math/misc/sign.h
-  
-  include/vecpp/cste_math/rounding/absolute.h
-  include/vecpp/cste_math/rounding/fractional.h
-  include/vecpp/cste_math/rounding/round.h
-  include/vecpp/cste_math/rounding/round_down.h
-  include/vecpp/cste_math/rounding/round_up.h
-  include/vecpp/cste_math/rounding/truncate.h
- 
-  include/vecpp/cste_math/trigonometry/bound/cosine_pi4.h
-  include/vecpp/cste_math/trigonometry/bound/sine_pi4.h
-  include/vecpp/cste_math/trigonometry/cosine.h
-  include/vecpp/cste_math/trigonometry/sine.h
-  include/vecpp/cste_math/trigonometry/tangent.h
-
-  include/vecpp/cste_math/config.h
-  include/vecpp/cste_math/constants.h
-  include/vecpp/cste_math/cste_math.h
-  include/vecpp/cste_math/functions.h
-)
 
 if(CSTE_MATH_BUILD_DOCS)
   add_custom_command(
@@ -52,37 +21,16 @@ if(CSTE_MATH_BUILD_DOCS)
   set_target_properties(generate_doc PROPERTIES FOLDER "prepare_for_deploy")
 endif()
 
-if(CSTE_MATH_BUILD_SINGLE_HEADER)
-  file(MAKE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/vecpp/cste_math/)
-
-  set(SINGLE_INCLUDE_FILE ${CMAKE_CURRENT_BINARY_DIR}/vecpp/cste_math/cste_math_single.h)
-  set(NOTICE_FILE ${CMAKE_CURRENT_SOURCE_DIR}/misc/notice.txt)
-
-  add_custom_command(
-    OUTPUT ${SINGLE_INCLUDE_FILE}
-    WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/include/
-    DEPENDS ${CSTE_MATH_HEADERS}
-    COMMAND python ${CMAKE_CURRENT_SOURCE_DIR}/tools/header_compiler/header_compiler.py 
-      --output=${SINGLE_INCLUDE_FILE}
-      --notice=${NOTICE_FILE}
-      --header_guard="CSTE_MATH_SINGLE_INCLUDE_H_"
-      --input=${CMAKE_CURRENT_SOURCE_DIR}/include/vecpp/cste_math/cste_math.h)
-
-  add_custom_target(generate_single_include ALL DEPENDS ${SINGLE_INCLUDE_FILE})
-  set_target_properties(generate_single_include PROPERTIES FOLDER "prepare_for_deploy")
-endif()
-
 
 add_library(cste_math INTERFACE)
 add_library(cste_math::cste_math ALIAS cste_math)
 
 target_include_directories(cste_math INTERFACE 
-  $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}>
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
   $<INSTALL_INTERFACE:include>
 )
 
-target_compile_features(cste_math INTERFACE cxx_std_17)
+target_compile_features(cste_math INTERFACE cxx_std_20)
 
 install(TARGETS cste_math EXPORT cste_mathTargets)
 

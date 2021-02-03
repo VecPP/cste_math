@@ -1,38 +1,21 @@
-
-**Warning:**
-
-The way this library is written does not make sense in a world where `std::is_constant_evaluated` is a thing. You really shouldn't be using it as is. A new version is in the works. Stay tuned.
-
 # cste_math
 
 constexpr scalar math.
-
-[![Build Status](https://travis-ci.com/VecPP/cste_math.svg?branch=master)](https://travis-ci.com/VecPP/cste_math)
-[![CircleCI](https://circleci.com/gh/VecPP/cste_math.svg?style=svg)](https://circleci.com/gh/VecPP/cste_math)
-[![Build status](https://ci.appveyor.com/api/projects/status/hfidx2nn06jc480k/branch/master?svg=true)](https://ci.appveyor.com/project/FrancoisChabot/cste-math/branch/master)
 
 ```cpp
 #include "cste_math/cste_math.h"
 
 namespace cm = cste_math;
 
-constexpr float val = cm::sine(cm::pi<float> * 0.5f);
-constexpr float val_2 = cm::square_root(3.0f);
+constexpr float val = cm::sine(cm::pi<float> / 3.0f);
+constexpr double val_2 = cm::square_root(3.0);
 ```
 
 ## Quick Start
 
 ### Prerequisites
 
-All you need is a standard compliant C++17 compiler. The library is 
-sytematically tested on the following compilers, but that does not mean that 
-earlier versions will not work.
-
-Compiler | Version
----------|--------
-GCC      | 7.3.0
-clang    | 6.0.0
-MSVC     | 14.15.26726
+All you need is a compiler that implements c++20's `std::is_is_constant_evaluated`.
 
 ### Installation
 
@@ -40,13 +23,8 @@ MSVC     | 14.15.26726
 cste_math is a header-only library. As such, all you need to do is make the 
 contents of the `include` directory available to your compiler.
 
-#### single-include
-Alternatively, you can simply copy "cste_math_single.h" into your project and use 
-that single freestanding header. (if you are cloning the raw source, you will
-need to generate it using `-DCSTE_MATH_BUILD_SINGLE_HEADER`).
-
 #### CMake
-Finally, while the cmake project is primarily used to manage tests and 
+While the cmake project is primarily used to manage tests and 
 deployment, it's still set up as a proper target-exporting project. So you can 
 use either `add_subdirectory(path/to/cste_math_source)` or `find_package(cste_math)` 
 and use `target_link_libraries(my_target cste_math::cste_math)`.
@@ -56,7 +34,40 @@ and use `target_link_libraries(my_target cste_math::cste_math)`.
 ```cpp
 #include "cste_math/cste_math.h"
 
-constexpr float sq_2 = cste::square_root(2.0f);
+void foo() {
+	constexpr float sq_2 = cste::square_root(2.0f);
+}
+```
+
+### Compile-time vs runtime
+
+When you use functions defined in the root `cste` namespace, the library will 
+choose wether to use a `constexpr` or an efficient runtime implementation based on context.
+This is important because some `constexpr` implementations are substantially slower than their
+runtime equivalent.
+
+At first glance, that doesn't sound liek a major issue. However, because of this, the library cannot
+guarantee that the result will always be the same. 
+
+If you find yourself in a situation where you need that guarantee for whatever reason, you can force
+the use of the compile-time algorithm by using the `cste::ct` namespace, at the cost of some performance.
+
+```cpp
+#include "cste_math/cste_math.h"
+
+void foo() {
+  constexpr float v_a = cste::exponential(0.1234f);
+  float v_b = cste::exponential(0.1234f);
+
+  assert(v_a == v_b); // WATCH OUT! Not necessarily the case!
+}
+
+void bar() {
+  constexpr float v_a = cste::exponential(0.1234f);
+  float v_b = cste::ct::exponential(0.1234f);
+
+  assert(v_a == v_b); // Guaranteed.
+}
 ```
 
 ## Quick Reference
@@ -117,17 +128,6 @@ library is currently being developped on a as-needed basis.
 
 ### Why are functions not named consistently with established conventions?
 
-There are two reasons:
-
-First: `cste_math` is not guaranteed to return values that are going to 100% 
-match their stdlib equivalent on all platforms. Having different functions names 
-helps in avoiding anyone assuming that could be the case.
-
-Second: Writing abreviated wrappers around these functions is trivial, so we'd
-rather make explicit function names by default, and let users write wrappers
-if they'd rather use convention-based naming.
-
-In fact, we do maintain a `stdlib` subnamespace (you can find it in 
-`cst_math/stdlib.h`), where renamed versions of the functions matching their 
-stdlib equivalent are found, so that cste_math can be used as a drop-in 
-replacement when the user knows what they're doing.
+`cste_math` is not guaranteed to return values that are going to 100% 
+match their standard library equivalent on all platforms. Having different functions names 
+helps in preventing people from assuming that could be the case.

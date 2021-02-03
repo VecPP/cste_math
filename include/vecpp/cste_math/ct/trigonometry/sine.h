@@ -1,20 +1,27 @@
+//  Copyright 2020 Francois Chabot
+//  (francois.chabot.dev@gmail.com)
+//
+//  Distributed under the Boost Software License, Version 1.0.
+//  (See accompanying file LICENSE or copy at
+//  http://www.boost.org/LICENSE_1_0.txt)
+
 #ifndef CSTE_MATH_TRIGNOMETRY_SINE_H_INCLUDED
 #define CSTE_MATH_TRIGNOMETRY_SINE_H_INCLUDED
 
 #include "vecpp/cste_math/config.h"
 
-#include "vecpp/cste_math/calc/modulo.h"
+#include "vecpp/cste_math/ct/calc/modulo.h"
 #include "vecpp/cste_math/constants.h"
-#include "vecpp/cste_math/misc/inf_nan.h"
-#include "vecpp/cste_math/trigonometry/bound/cosine_pi4.h"
-#include "vecpp/cste_math/trigonometry/bound/sine_pi4.h"
+#include "vecpp/cste_math/ct/misc/inf_nan.h"
+#include "vecpp/cste_math/ct/trigonometry/bound/cosine_pi4.h"
+#include "vecpp/cste_math/ct/trigonometry/bound/sine_pi4.h"
 
 #include <iomanip>
 #include <iostream>
 #include <limits>
 
 namespace CSTE_MATH_NAMESPACE {
-
+namespace ct {
 //
 template <typename T>
 constexpr T sine(const T& rad) {
@@ -56,6 +63,7 @@ constexpr T sine(const T& rad) {
 
   return T(sine_pi4(r));
 }
+}  // namespace ct
 }  // namespace CSTE_MATH_NAMESPACE
 
 #endif

@@ -1,7 +1,6 @@
 include_directories(.)
 
-add_library(catch_main catch_main.cpp)
-set_target_properties(catch_main PROPERTIES FOLDER "tests")
+add_library(doctest_main doctest_main.cpp)
 
 SET( CSTE_MATH_TESTS
   calc/exponential.cpp
@@ -13,28 +12,12 @@ SET( CSTE_MATH_TESTS
   trigonometry/sine.cpp
 )
 
-MACRO(config_test_target TGT)
-
-target_link_libraries(${TGT} catch_main cste_math::cste_math)
-set_target_properties(${TGT} PROPERTIES FOLDER "tests")
-add_test(${TGT} ${TGT})
+add_executable(cste_math_tests ${CSTE_MATH_TESTS})
+target_link_libraries(cste_math_tests doctest_main cste_math::cste_math)
+add_test(cste_math_tests cste_math_tests)
 
 if(MSVC)
-  target_compile_options(${TGT} PRIVATE /W4 /WX)
+    target_compile_options(cste_math_tests PRIVATE /W4 /WX)
 else(MSVC)
-  target_compile_options(${TGT} PRIVATE -Wall -Wextra -pedantic -Werror)
+    target_compile_options(cste_math_tests PRIVATE -Wall -Wextra -pedantic -Werror)
 endif(MSVC)
-endmacro()
-
-add_executable(all_tests ${CSTE_MATH_TESTS})
-config_test_target(all_tests)
-
-if(CSTE_MATH_BUILD_SINGLE_HEADER)
-  add_executable(all_tests_sh ${CSTE_MATH_TESTS})
-  target_include_directories(all_tests_sh PRIVATE ${CMAKE_CURRENT})
-  target_compile_definitions(all_tests_sh
-    PRIVATE CSTE_MATH_TEST_SINGLE_HEADER
-  )
-  add_dependencies(all_tests_sh generate_single_include)
-  config_test_target(all_tests_sh)
-endif()
