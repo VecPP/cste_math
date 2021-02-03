@@ -1,3 +1,8 @@
+
+**Warning:**
+
+The way this library is written does not make sense in a world where `std::is_constant_evaluated` is a thing. You really shouldn;t be using it as is. A new version is in the works. Stay tuned.
+
 # cste_math
 
 constexpr scalar math.
